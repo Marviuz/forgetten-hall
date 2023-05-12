@@ -23,7 +23,7 @@ const calculateApproximateSize = (height: number) => {
 
 export const Header: FC<HeaderProps> = () => {
   return (
-    <header className="h-8 px-4 border-b bg-primary-1 border-accent">
+    <header className="h-8 px-4 border-b bg-primary-1 border-secondary">
       <div className="w-full h-full">
         <div className="flex items-center w-full h-full">
           <Link href={`${NavigationRoutes.Home}`}>
