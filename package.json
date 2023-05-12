@@ -29,6 +29,7 @@
     "@storybook/addon-essentials": "7.0.11",
     "@storybook/addon-interactions": "7.0.11",
     "@storybook/addon-links": "7.0.11",
+    "@storybook/addon-styling": "^1.0.7",
     "@storybook/blocks": "7.0.11",
     "@storybook/nextjs": "7.0.11",
     "@storybook/react": "7.0.11",
