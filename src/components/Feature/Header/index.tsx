@@ -2,9 +2,9 @@ import { ImagePaths } from '@/constants/ImagePaths';
 import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ComponentProps, FC } from 'react';
+import { FC } from 'react';
 
-export type HeaderProps = ComponentProps<'header'> & {};
+export type HeaderProps = {};
 
 const IMAGE_SIZE = {
   width: 453,
