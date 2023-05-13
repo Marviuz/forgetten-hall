@@ -54,6 +54,7 @@ export const Combobox: FC<ComboboxProps> = ({
       >
         <input
           className="w-full py-2 text-white bg-transparent outline-none peer"
+          name={name}
           {...getInputProps({ ...props })}
         />
 
