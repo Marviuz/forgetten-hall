@@ -38,7 +38,9 @@ export const Combobox: FC<ComboboxProps> = ({
     left: ref.current?.offsetLeft,
   };
 
-  const getItem = ($val: string) => {
+  const getItem = ($val?: string) => {
+    if (!$val) return;
+
     return options.filter((opt) =>
       typeof opt !== 'string' ? opt.value === $val : undefined
     )[0] as ComboBoxOptionType;
@@ -70,6 +72,15 @@ export const Combobox: FC<ComboboxProps> = ({
         )}
         ref={ref}
       >
+        {getItem(value?.toString())?.avatar && (
+          <Image
+            src={getItem(value?.toString())?.avatar!}
+            alt={getItem(value?.toString())?.value!}
+            width={24}
+            height={24}
+            className="border rounded-full border-secondary grow-0 shrink-0"
+          />
+        )}
         <input
           className="w-full py-2 text-white bg-transparent outline-none peer"
           name={name}
@@ -113,11 +124,11 @@ export const Combobox: FC<ComboboxProps> = ({
                   <div className="flex items-center gap-2">
                     {getItem(item)?.avatar && (
                       <Image
-                        src={getItem(item).avatar!}
+                        src={getItem(item)?.avatar!}
                         alt={item}
                         width={24}
                         height={24}
-                        className="w-6 h-6 rounded-full"
+                        className="w-6 h-6 border rounded-full border-secondary"
                       />
                     )}
                     <span>{item}</span>
