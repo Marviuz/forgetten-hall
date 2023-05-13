@@ -66,7 +66,7 @@ export const Combobox: FC<ComboboxProps> = ({
       <ul
         {...getMenuProps()}
         className={twMerge(
-          'absolute max-h-0',
+          'absolute max-h-0 bg-primary-1',
           isOpen && 'max-h-[30vh] overflow-auto border rounded border-secondary'
         )}
         style={{ ...itemsPosition }}
