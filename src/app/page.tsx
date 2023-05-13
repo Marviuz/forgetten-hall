@@ -1,18 +1,20 @@
-import { Footer } from '@/components/Feature/Footer';
-import { Header } from '@/components/Feature/Header';
+import { ImagePaths } from '@/constants/ImagePaths';
 import { NavigationRoutes } from '@/constants/NavigationRoutes';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="flex flex-col">
-      <Link href={`${NavigationRoutes.Hall}/1`}>1</Link>
-      <Link href={`${NavigationRoutes.Hall}/2`}>2</Link>
-      <Link href={`${NavigationRoutes.Hall}/3`}>3</Link>
-      <Link href={`${NavigationRoutes.Hall}/4`}>4</Link>
-      <Link href={`${NavigationRoutes.Hall}/5`}>5</Link>
-      <Link href={`${NavigationRoutes.Hall}/6`}>6</Link>
-      <Link href={`${NavigationRoutes.Hall}/7`}>7</Link>
+    <div className="flex justify-around">
+      {Array.from(Array(7)).map((_, i) => (
+        <Link
+          href={`${NavigationRoutes.Hall}/${i + 1}`}
+          className="relative w-14 aspect-square"
+          key={i}
+        >
+          <Image src={ImagePaths.StarRailLogo} alt="sample image" fill></Image>
+        </Link>
+      ))}
     </div>
   );
 }
