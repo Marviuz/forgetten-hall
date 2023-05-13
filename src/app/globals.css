@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer {
+@layer base {
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-full;
+  }
+
   body {
     @apply bg-primary-1;
   }
