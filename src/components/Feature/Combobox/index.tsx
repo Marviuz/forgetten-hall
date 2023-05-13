@@ -28,13 +28,13 @@ export const Combobox: FC<ComboboxProps> = ({
 
   const { isOpen, getMenuProps, getInputProps, getItemProps, selectItem } =
     useCombobox({
-      inputValue: value?.toString(),
+      inputValue: value?.toString() || '',
       items: inputItems,
       onSelectedItemChange: ({ inputValue }) => {
-        if (onChange) onChange(inputValue!);
+        if (onChange) onChange(inputValue || '');
       },
       onInputValueChange: ({ inputValue }) => {
-        if (onChange) onChange(inputValue!);
+        if (onChange) onChange(inputValue || '');
         setInputItems(
           options.filter((item) =>
             item.toLowerCase().includes(inputValue!.toLowerCase())
