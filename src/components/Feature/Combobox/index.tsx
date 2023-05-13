@@ -3,9 +3,12 @@ import { FC, useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { AiOutlineClose } from 'react-icons/ai';
 import { TextFieldProps } from '@/components/base/TextField';
+import Image from 'next/image';
+
+type ComboBoxOptionType = { avatar?: string; value: string };
 
 export type ComboboxProps = Omit<TextFieldProps, 'onChange'> & {
-  options: string[];
+  options: (ComboBoxOptionType | string)[];
   onChange?: (value: string) => void;
 };
 
@@ -18,12 +21,22 @@ export const Combobox: FC<ComboboxProps> = ({
   onChange,
   ...props
 }) => {
-  const [inputItems, setInputItems] = useState(options);
+  const opts = options.map((opt) =>
+    typeof opt === 'string' ? opt : opt.value
+  );
+
+  const [inputItems, setInputItems] = useState(opts);
   const ref = useRef<HTMLLabelElement>(null);
   const itemsPosition = {
     top: (ref.current?.getBoundingClientRect().bottom || 0) + 8,
     left: ref.current?.getBoundingClientRect().left,
     width: ref.current?.getBoundingClientRect().width,
+  };
+
+  const getItem = ($val: string) => {
+    return options.filter((opt) =>
+      typeof opt !== 'string' ? opt.value === $val : undefined
+    )[0] as ComboBoxOptionType;
   };
 
   const { isOpen, getMenuProps, getInputProps, getItemProps, selectItem } =
@@ -36,7 +49,7 @@ export const Combobox: FC<ComboboxProps> = ({
       onInputValueChange: ({ inputValue }) => {
         if (onChange) onChange(inputValue || '');
         setInputItems(
-          options.filter((item) =>
+          opts.filter((item) =>
             item.toLowerCase().includes(inputValue!.toLowerCase())
           )
         );
@@ -82,18 +95,31 @@ export const Combobox: FC<ComboboxProps> = ({
       >
         {isOpen &&
           (inputItems.length ? (
-            inputItems.map((item, index) => (
-              <li
-                className="p-2 text-white transition-colors border-b cursor-pointer hover:bg-secondary border-secondary last-of-type:border-b-0"
-                key={`${item}${index}`}
-                {...getItemProps({
-                  item,
-                  index,
-                })}
-              >
-                {item}
-              </li>
-            ))
+            inputItems.map((item, index) => {
+              return (
+                <li
+                  className="p-2 text-white transition-colors border-b cursor-pointer hover:bg-secondary border-secondary last-of-type:border-b-0"
+                  key={`${item}${index}`}
+                  {...getItemProps({
+                    item,
+                    index,
+                  })}
+                >
+                  <div className="flex items-center gap-2">
+                    {getItem(item)?.avatar && (
+                      <Image
+                        src={getItem(item).avatar!}
+                        alt={item}
+                        width={24}
+                        height={24}
+                        className="w-6 h-6 rounded-full"
+                      />
+                    )}
+                    <span>{item}</span>
+                  </div>
+                </li>
+              );
+            })
           ) : (
             <li className="p-2 font-bold text-center text-gray-400">
               Not found!
