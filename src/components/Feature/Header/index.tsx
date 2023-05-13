@@ -17,21 +17,27 @@ const calculateApproximateSize = (height: number) => {
 
   return {
     height,
-    width: wPercent,
+    width: Math.round(wPercent),
   };
 };
 
 export const Header: FC<HeaderProps> = () => {
   return (
-    <header className="h-8 px-4 border-b bg-primary-1 border-secondary">
+    <header className="h-20 px-4 border-b bg-primary-1 border-secondary">
       <div className="w-full h-full">
         <div className="flex items-center w-full h-full">
-          <Link href={`${NavigationRoutes.Home}`}>
+          <Link
+            href={`${NavigationRoutes.Home}`}
+            className="flex items-center italic"
+          >
             <Image
               src={ImagePaths.StarRailLogo}
               alt="Honkai Star Rail Logo"
-              {...calculateApproximateSize(24)}
+              {...calculateApproximateSize(64)}
             ></Image>
+            <div className="text-3xl font-bold text-white">
+              <span className="text-accent">Forgotten</span> Hall
+            </div>
           </Link>
         </div>
       </div>
