@@ -4,8 +4,9 @@ import { twMerge } from 'tailwind-merge';
 import { AiOutlineClose } from 'react-icons/ai';
 import { TextFieldProps } from '@/components/base/TextField';
 
-export type ComboboxProps = TextFieldProps & {
+export type ComboboxProps = Omit<TextFieldProps, 'onChange'> & {
   options: string[];
+  onChange: (value: string) => void;
 };
 
 export const Combobox: FC<ComboboxProps> = ({
@@ -13,6 +14,8 @@ export const Combobox: FC<ComboboxProps> = ({
   name,
   id,
   className,
+  value,
+  onChange,
   ...props
 }) => {
   const [inputItems, setInputItems] = useState(options);
@@ -25,8 +28,13 @@ export const Combobox: FC<ComboboxProps> = ({
 
   const { isOpen, getMenuProps, getInputProps, getItemProps, selectItem } =
     useCombobox({
+      inputValue: value?.toString(),
       items: inputItems,
+      onSelectedItemChange: ({ inputValue }) => {
+        onChange(inputValue!);
+      },
       onInputValueChange: ({ inputValue }) => {
+        onChange(inputValue!);
         setInputItems(
           options.filter((item) =>
             item.toLowerCase().includes(inputValue!.toLowerCase())
