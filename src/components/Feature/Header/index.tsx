@@ -50,8 +50,8 @@ export const Header: FC<HeaderProps> = () => {
                 </div>
               </Link>
             </div>
-            <div className="flex items-center">
-              <Button onClick={() => setIsOpen(true)}>HAKDOG</Button>
+            <div className="flex items-center shrink-0">
+              <Button onClick={() => setIsOpen(true)}>Submit a data</Button>
             </div>
           </div>
         </div>
