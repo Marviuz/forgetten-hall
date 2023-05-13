@@ -8,7 +8,7 @@ export const TextField: FC<TextFieldProps> = forwardRef(
     return (
       <input
         className={twMerge(
-          '"px-4 py-2 text-white transition-colors bg-transparent border rounded outline-none border-secondary focus:bg-secondary"',
+          'px-4 py-2 text-white transition-colors bg-transparent border rounded outline-none border-secondary focus:bg-secondary',
           className
         )}
         ref={ref}
