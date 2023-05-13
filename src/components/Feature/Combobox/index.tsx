@@ -12,6 +12,8 @@ export type ComboboxProps = Omit<TextFieldProps, 'onChange'> & {
   onChange?: (value: string) => void;
 };
 
+const LIST_TO_INPUT_SPACING = 8;
+
 export const Combobox: FC<ComboboxProps> = ({
   options,
   name,
@@ -28,9 +30,12 @@ export const Combobox: FC<ComboboxProps> = ({
   const [inputItems, setInputItems] = useState(opts);
   const ref = useRef<HTMLLabelElement>(null);
   const itemsPosition = {
-    top: (ref.current?.getBoundingClientRect().bottom || 0) + 8,
-    left: ref.current?.getBoundingClientRect().left,
     width: ref.current?.getBoundingClientRect().width,
+    top:
+      (ref.current?.offsetTop || 0) +
+      (ref.current?.offsetHeight || 0) +
+      LIST_TO_INPUT_SPACING,
+    left: ref.current?.offsetLeft,
   };
 
   const getItem = ($val: string) => {
