@@ -6,7 +6,7 @@ import { TextFieldProps } from '@/components/base/TextField';
 
 export type ComboboxProps = Omit<TextFieldProps, 'onChange'> & {
   options: string[];
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
 };
 
 export const Combobox: FC<ComboboxProps> = ({
@@ -31,10 +31,10 @@ export const Combobox: FC<ComboboxProps> = ({
       inputValue: value?.toString(),
       items: inputItems,
       onSelectedItemChange: ({ inputValue }) => {
-        onChange(inputValue!);
+        if (onChange) onChange(inputValue!);
       },
       onInputValueChange: ({ inputValue }) => {
-        onChange(inputValue!);
+        if (onChange) onChange(inputValue!);
         setInputItems(
           options.filter((item) =>
             item.toLowerCase().includes(inputValue!.toLowerCase())
