@@ -27,7 +27,7 @@ export const AddDataCard: FC<AddDataCardProps> = ({
       onSubmit={onSubmit}
     >
       {({ values }) => (
-        <Form className="w-full max-w-[600px] border border-secondary rounded text-white">
+        <Form className="w-full max-w-[1440px] border border-secondary rounded text-white">
           <div className="p-4">
             <h2 className="text-2xl font-bold">Add data</h2>
           </div>
