@@ -20,7 +20,7 @@ export const Select: FC<SelectProps> = (props) => {
     <ReactSelect
       unstyled
       classNames={{
-        menuList: () => 'border border-secondary rounded',
+        menuList: () => 'border border-secondary rounded bg-primary-1',
         option: () =>
           'hover:bg-secondary transition-colors border-t border-secondary first-of-type:border-t-0',
         noOptionsMessage: () => 'text-white font-semibold italic py-2 px-4',
@@ -33,7 +33,7 @@ export const Select: FC<SelectProps> = (props) => {
 
           return (
             <components.Control {...ctrlProps}>
-              {$value ? (
+              {$value && (
                 <Image
                   src={$value.image}
                   alt={$value.label}
@@ -41,8 +41,6 @@ export const Select: FC<SelectProps> = (props) => {
                   width={24}
                   className="border rounded-full border-secondary"
                 />
-              ) : (
-                'well shit'
               )}
               {children}
             </components.Control>
