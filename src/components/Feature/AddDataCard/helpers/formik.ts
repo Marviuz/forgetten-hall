@@ -1,4 +1,4 @@
-import { InferType, addMethod, array, object, string, tuple } from 'yup';
+import { InferType, array, object, string } from 'yup';
 
 export enum AddDataFormNames {
   Team1 = 'team1',
@@ -6,13 +6,25 @@ export enum AddDataFormNames {
 }
 
 export const initialValues = {
-  [AddDataFormNames.Team1]: ['', '', '', ''],
-  [AddDataFormNames.Team2]: ['', '', '', ''],
+  [AddDataFormNames.Team1]: [],
+  [AddDataFormNames.Team2]: [],
 };
 
 export const validationSchema = object({
-  [AddDataFormNames.Team1]: array(string()).min(1),
-  [AddDataFormNames.Team2]: array(string()).min(1),
+  [AddDataFormNames.Team1]: array(
+    object({
+      image: string(),
+      label: string(),
+      value: string(),
+    })
+  ).min(1),
+  [AddDataFormNames.Team2]: array(
+    object({
+      image: string(),
+      label: string(),
+      value: string(),
+    })
+  ).min(1),
 });
 
 export type AddDataFormType = InferType<typeof validationSchema>;

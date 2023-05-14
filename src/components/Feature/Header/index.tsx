@@ -8,7 +8,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState, Fragment } from 'react';
 import { AddDataCard } from '../AddDataCard';
-import CHARACTERS from '@/constants/characters';
 
 export type HeaderProps = {};
 
@@ -19,16 +18,16 @@ const IMAGE_SIZE = {
 
 const calculateApproximateSize = (height: number) => {
   const hPercent = height / IMAGE_SIZE.height;
-  const wPercent = hPercent * IMAGE_SIZE.width;
+  const wPercent = Math.round(hPercent * IMAGE_SIZE.width);
 
   return {
     height,
-    width: Math.round(wPercent),
+    width: wPercent,
   };
 };
 
 export const Header: FC<HeaderProps> = () => {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -80,14 +79,8 @@ export const Header: FC<HeaderProps> = () => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1440px]">
-              <AddDataCard
-                onSubmit={console.log}
-                options={CHARACTERS.map(({ name, img }) => ({
-                  value: name,
-                  avatar: img,
-                }))}
-              />
+            <Dialog.Panel className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[888px]">
+              <AddDataCard onSubmit={console.log} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
