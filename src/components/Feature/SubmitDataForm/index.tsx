@@ -24,7 +24,7 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({
       validationSchema={validationSchema}
       onSubmit={onSubmit}
     >
-      {({ values }) => {
+      {({ values, touched, isValid }) => {
         const selected = [
           ...values[SubmitDataFormName.Team1],
           ...values[SubmitDataFormName.Team2],
@@ -87,7 +87,9 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({
 
             <div className="p-4">
               <div className="flex justify-end">
-                <Button type="submit">Submit</Button>
+                <Button type="submit" disabled={touched && !isValid}>
+                  Submit
+                </Button>
               </div>
             </div>
           </Form>
