@@ -29,6 +29,7 @@ export const Selector: FC<SelectorProps> = ({
   return (
     <>
       <Button
+        type="button"
         className="relative items-end p-0 overflow-hidden bg-center bg-cover enabled:active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
         style={{
           backgroundImage: value?.src && `url(${value.src})`,
@@ -84,6 +85,7 @@ export const Selector: FC<SelectorProps> = ({
                         onChange(val);
                         setIsOpen(false);
                       }}
+                      type="button"
                     >
                       <div className="w-full text-white bg-black/75">
                         <div className="p-3 text-lg font-semibold text-center">
