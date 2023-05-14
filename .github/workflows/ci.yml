@@ -26,5 +26,5 @@ jobs:
       - name: Install deps
         run: pnpm install
 
-      - name: Link and build
+      - name: Lint and build
         run: pnpm lint && pnpm build
