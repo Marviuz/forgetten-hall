@@ -36,7 +36,7 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
         return (
           <Form className="text-white border rounded border-secondary">
             <div className="p-4">
-              <h2 className="text-2xl font-bold">Add data</h2>
+              <h2 className="text-2xl font-bold">Submit your run</h2>
             </div>
             <div className="w-full h-full">
               <div className="p-4">
