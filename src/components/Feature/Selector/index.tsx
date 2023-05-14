@@ -31,7 +31,7 @@ export const Selector: FC<SelectorProps> = ({
     <>
       <Button
         type="button"
-        className="relative items-end p-0 overflow-hidden bg-center bg-cover enabled:active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
+        className="relative items-end p-0 overflow-hidden bg-center bg-cover w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
         style={{
           backgroundImage: value?.src && `url(${value.src})`,
         }}
@@ -79,7 +79,7 @@ export const Selector: FC<SelectorProps> = ({
                 <div className="flex flex-wrap justify-center gap-2">
                   <Button
                     type="button"
-                    className="relative items-end p-0 overflow-hidden bg-center bg-cover enabled:active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
+                    className="relative items-end p-0 overflow-hidden bg-center bg-cover w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
                     onClick={() => {
                       onChange({ label: '', src: '', value: '' });
                       setIsOpen(false);
@@ -94,7 +94,7 @@ export const Selector: FC<SelectorProps> = ({
                   {options.map((val, i) => (
                     <Button
                       key={val.id || i}
-                      className="items-end p-0 overflow-hidden bg-center bg-cover active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-blend-multiply bg-opacity-90"
+                      className="items-end p-0 overflow-hidden bg-center bg-cover w-36 h-52 disabled:bg-blend-multiply bg-opacity-90"
                       style={{ backgroundImage: `url(${val.src})` }}
                       onClick={() => {
                         onChange(val);
