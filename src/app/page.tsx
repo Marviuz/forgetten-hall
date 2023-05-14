@@ -3,16 +3,23 @@ import Link from 'next/link';
 import { ImagePaths } from '@/constants/ImagePaths';
 import { NavigationRoutes } from '@/constants/NavigationRoutes';
 
+// TODO actual routes
+const HALL_ROUTES = Array.from(Array(7)).map((_, i) => ({
+  hallNumber: i + 1,
+  image: ImagePaths.StarRailLogo,
+  label: 'sample image',
+}));
+
 export default function Home() {
   return (
     <div className="flex justify-around">
-      {Array.from(Array(7)).map((_, i) => (
+      {HALL_ROUTES.map(({ hallNumber, image, label }, i) => (
         <Link
-          href={`${NavigationRoutes.Hall}/${i + 1}`}
+          href={`${NavigationRoutes.Hall}/${hallNumber}`}
           className="relative w-14 aspect-square"
           key={i}
         >
-          <Image src={ImagePaths.StarRailLogo} alt="sample image" fill />
+          <Image src={image} alt={label} fill />
         </Link>
       ))}
     </div>
