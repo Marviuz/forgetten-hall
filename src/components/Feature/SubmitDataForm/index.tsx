@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Formik, Form, FieldArray } from 'formik';
 import {
-  AddDataFormNames,
-  AddDataFormType,
+  SubmitDataFormName,
+  SubmitDataFormType,
   initialValues,
   validationSchema,
 } from './helpers/formik';
@@ -10,11 +10,14 @@ import { Button } from '@/components/base/Button';
 import { FormikSelector } from '@/components/formControls/FormikSelector';
 import CHARACTERS from '@/constants/characters';
 
-export type AddDataCardProps = {
-  onSubmit: (formData: AddDataFormType) => void;
+export type SubmitDataFormProps = {
+  onSubmit: (formData: SubmitDataFormType) => void;
 };
 
-export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
+export const SubmitDataForm: FC<SubmitDataFormProps> = ({
+  onSubmit,
+  ...props
+}) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -23,8 +26,8 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
     >
       {({ values }) => {
         const selected = [
-          ...values[AddDataFormNames.Team1],
-          ...values[AddDataFormNames.Team2],
+          ...values[SubmitDataFormName.Team1],
+          ...values[SubmitDataFormName.Team2],
         ].map((_) => _.value);
 
         const filteredOptions = CHARACTERS.map((val) => ({
@@ -46,14 +49,14 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-2">
                     <FieldArray
-                      name={AddDataFormNames.Team1}
+                      name={SubmitDataFormName.Team1}
                       render={(arrayHelper) => {
                         return (
                           <>
-                            {values[AddDataFormNames.Team1].map((_, i) => (
+                            {values[SubmitDataFormName.Team1].map((_, i) => (
                               <FormikSelector
                                 key={i}
-                                name={`${AddDataFormNames.Team1}.${i}`}
+                                name={`${SubmitDataFormName.Team1}.${i}`}
                                 options={filteredOptions}
                               />
                             ))}
@@ -64,13 +67,13 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
                   </div>
                   <div className="flex gap-2">
                     <FieldArray
-                      name={AddDataFormNames.Team2}
+                      name={SubmitDataFormName.Team2}
                       render={(arrayHelper) => (
                         <>
-                          {values[AddDataFormNames.Team2].map((_, i) => (
+                          {values[SubmitDataFormName.Team2].map((_, i) => (
                             <FormikSelector
                               key={i}
-                              name={`${AddDataFormNames.Team2}.${i}`}
+                              name={`${SubmitDataFormName.Team2}.${i}`}
                               options={filteredOptions}
                             />
                           ))}

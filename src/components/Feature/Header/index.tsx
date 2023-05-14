@@ -7,7 +7,7 @@ import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState, Fragment } from 'react';
-import { AddDataCard } from '../AddDataCard';
+import { SubmitDataForm } from '../SubmitDataForm';
 
 export type HeaderProps = {};
 
@@ -80,7 +80,7 @@ export const Header: FC<HeaderProps> = () => {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <AddDataCard onSubmit={console.log} />
+              <SubmitDataForm onSubmit={console.log} />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>

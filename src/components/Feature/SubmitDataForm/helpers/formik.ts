@@ -1,6 +1,6 @@
 import { InferType, array, object, string } from 'yup';
 
-export enum AddDataFormNames {
+export enum SubmitDataFormName {
   Team1 = 'team1',
   Team2 = 'team2',
 }
@@ -12,13 +12,13 @@ const initialValue = {
 };
 
 export const initialValues = {
-  [AddDataFormNames.Team1]: [
+  [SubmitDataFormName.Team1]: [
     initialValue,
     initialValue,
     initialValue,
     initialValue,
   ],
-  [AddDataFormNames.Team2]: [
+  [SubmitDataFormName.Team2]: [
     initialValue,
     initialValue,
     initialValue,
@@ -39,8 +39,8 @@ const valueSchema = array(
 );
 
 export const validationSchema = object({
-  [AddDataFormNames.Team1]: valueSchema,
-  [AddDataFormNames.Team2]: valueSchema,
+  [SubmitDataFormName.Team1]: valueSchema,
+  [SubmitDataFormName.Team2]: valueSchema,
 });
 
-export type AddDataFormType = InferType<typeof validationSchema>;
+export type SubmitDataFormType = InferType<typeof validationSchema>;
