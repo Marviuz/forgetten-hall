@@ -79,7 +79,7 @@ export const Header: FC<HeaderProps> = () => {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[888px]">
+            <Dialog.Panel className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
               <AddDataCard onSubmit={console.log} />
             </Dialog.Panel>
           </Transition.Child>
