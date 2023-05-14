@@ -31,7 +31,8 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
           src: val.img,
           value: val.name,
           label: val.name,
-        })).filter((opt) => !selected.includes(opt.value));
+          disabled: selected.includes(val.name),
+        }));
 
         return (
           <Form className="text-white border rounded border-secondary">
@@ -39,6 +40,8 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
               <h2 className="text-2xl font-bold">Submit your run</h2>
             </div>
             <div className="w-full h-full">
+              <div className="p-4">HAKDOG</div>
+
               <div className="p-4">
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-2">

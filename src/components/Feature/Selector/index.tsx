@@ -8,6 +8,7 @@ export type ValueType = {
   src: string;
   value: string;
   label: string;
+  disabled?: boolean;
 };
 
 export type SelectorProps = {
@@ -93,12 +94,13 @@ export const Selector: FC<SelectorProps> = ({
                   {options.map((val, i) => (
                     <Button
                       key={val.id || i}
-                      className="items-end p-0 overflow-hidden bg-center bg-cover active:scale-100 hover:scale-105 w-36 h-52"
+                      className="items-end p-0 overflow-hidden bg-center bg-cover active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-blend-multiply bg-opacity-90"
                       style={{ backgroundImage: `url(${val.src})` }}
                       onClick={() => {
                         onChange(val);
                         setIsOpen(false);
                       }}
+                      disabled={val.disabled}
                       type="button"
                     >
                       <div className="w-full text-white bg-black/75">

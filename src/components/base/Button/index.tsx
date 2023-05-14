@@ -7,7 +7,7 @@ export const Button: FC<ButtonProps> = ({ children, className, ...props }) => {
   return (
     <button
       className={twMerge(
-        'flex items-center justify-center px-4 py-2 text-white border rounded border-secondary bg-primary-1 hover:bg-secondary active:bg-primary-1 transition',
+        'flex items-center justify-center px-4 py-2 text-white border rounded border-secondary bg-primary-1 enabled:hover:bg-secondary enabled:active:bg-primary-1 transition',
         className
       )}
       {...props}
