@@ -26,21 +26,21 @@ export const initialValues = {
   ],
 };
 
+const valueSchema = array(
+  object({
+    src: string(),
+    value: string(),
+    label: string(),
+  })
+).test(
+  'at-least-one-required',
+  '${path} must have at least one non-empty field',
+  (obj) => obj?.some((val) => val.value)
+);
+
 export const validationSchema = object({
-  [AddDataFormNames.Team1]: array(
-    object({
-      src: string(),
-      value: string(),
-      label: string(),
-    })
-  ).min(1),
-  [AddDataFormNames.Team2]: array(
-    object({
-      src: string(),
-      value: string(),
-      label: string(),
-    })
-  ).min(1),
-}).optional();
+  [AddDataFormNames.Team1]: valueSchema,
+  [AddDataFormNames.Team2]: valueSchema,
+});
 
 export type AddDataFormType = InferType<typeof validationSchema>;
