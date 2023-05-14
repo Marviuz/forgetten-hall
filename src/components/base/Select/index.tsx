@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC } from 'react';
-import ReactSelect, { Props, components } from 'react-select';
+import ReactSelect, { type Props, components } from 'react-select';
 
 export type OptionType = {
   image: string;

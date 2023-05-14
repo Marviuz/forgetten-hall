@@ -1,6 +1,37 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:storybook/recommended"
-  ]
+    "plugin:storybook/recommended",
+    "plugin:import/recommended"
+  ],
+  "rules": {
+    "react/self-closing-comp": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "src/**",
+            "group": "internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ]
+  }
 }

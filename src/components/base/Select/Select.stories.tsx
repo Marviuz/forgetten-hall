@@ -1,7 +1,7 @@
+import CHARACTERS from '@/constants/characters';
+import { Select } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Select } from '.';
-import CHARACTERS from '@/constants/characters';
 
 const meta: Meta<typeof Select> = {
   title: 'Base/Select',

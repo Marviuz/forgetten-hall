@@ -1,12 +1,12 @@
 'use client';
 
-import { Button } from '@/components/base/Button';
 import { Dialog, Transition } from '@headlessui/react';
-import { ImagePaths } from '@/constants/ImagePaths';
-import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useState, Fragment } from 'react';
+import { Button } from '@/components/base/Button';
+import { ImagePaths } from '@/constants/ImagePaths';
+import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import { SubmitDataForm } from '../SubmitDataForm';
 
 export type HeaderProps = {};
@@ -43,7 +43,7 @@ export const Header: FC<HeaderProps> = () => {
                   src={ImagePaths.StarRailLogo}
                   alt="Honkai Star Rail Logo"
                   {...calculateApproximateSize(64)}
-                ></Image>
+                 />
                 <div className="text-3xl font-bold text-white">
                   <span className="text-accent">Forgotten</span> Hall
                 </div>

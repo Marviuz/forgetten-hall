@@ -1,6 +1,6 @@
+import { Selector } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Selector } from '.';
 
 const meta: Meta<typeof Selector> = {
   title: 'Feature/Selector',

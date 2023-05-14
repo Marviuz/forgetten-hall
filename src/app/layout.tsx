@@ -1,6 +1,6 @@
-import { Header } from '@/components/feature/Header';
 import './globals.css';
 import { Footer } from '@/components/feature/Footer';
+import { Header } from '@/components/feature/Header';
 
 // TODO something better
 export const metadata = {

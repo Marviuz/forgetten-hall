@@ -1,5 +1,5 @@
-import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import { NextResponse } from 'next/server';
+import { NavigationRoutes } from '@/constants/NavigationRoutes';
 
 export async function GET(request: Request) {
   return NextResponse.redirect(

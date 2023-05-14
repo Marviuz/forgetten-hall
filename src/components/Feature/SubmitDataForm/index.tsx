@@ -1,16 +1,16 @@
-import { FC } from 'react';
 import { Formik, Form, FieldArray } from 'formik';
+import { FC } from 'react';
+import { Button } from '@/components/base/Button';
+import { FormikSelect } from '@/components/formControls/FormikSelect';
+import { FormikSelector } from '@/components/formControls/FormikSelector';
+import { HALLS } from '@/constants/Halls';
+import CHARACTERS from '@/constants/characters';
 import {
   SubmitDataFormName,
   SubmitDataFormType,
   initialValues,
   validationSchema,
 } from './helpers/formik';
-import { Button } from '@/components/base/Button';
-import { FormikSelector } from '@/components/formControls/FormikSelector';
-import CHARACTERS from '@/constants/characters';
-import { FormikSelect } from '@/components/formControls/FormikSelect';
-import { HALLS } from '@/constants/Halls';
 
 export type SubmitDataFormProps = {
   onSubmit: (formData: SubmitDataFormType) => void;

@@ -1,6 +1,6 @@
+import { useField } from 'formik';
 import { FC } from 'react';
 import { Selector, SelectorProps } from '../feature/Selector';
-import { useField } from 'formik';
 
 export type FormikSelectorProps = Omit<SelectorProps, 'onChange'> & {
   onChange?: SelectorProps['onChange'];

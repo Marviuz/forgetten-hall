@@ -1,6 +1,6 @@
+import { useField } from 'formik';
 import { FC } from 'react';
 import { Select, SelectProps } from '../base/Select';
-import { useField } from 'formik';
 
 export type FormikSelectProps = SelectProps & {};
 

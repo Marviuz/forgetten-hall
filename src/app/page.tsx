@@ -1,7 +1,7 @@
-import { ImagePaths } from '@/constants/ImagePaths';
-import { NavigationRoutes } from '@/constants/NavigationRoutes';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ImagePaths } from '@/constants/ImagePaths';
+import { NavigationRoutes } from '@/constants/NavigationRoutes';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
           className="relative w-14 aspect-square"
           key={i}
         >
-          <Image src={ImagePaths.StarRailLogo} alt="sample image" fill></Image>
+          <Image src={ImagePaths.StarRailLogo} alt="sample image" fill />
         </Link>
       ))}
     </div>

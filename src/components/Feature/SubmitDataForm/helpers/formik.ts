@@ -1,5 +1,5 @@
+import { type InferType, array, object, string } from 'yup';
 import { HALLS } from '@/constants/Halls';
-import { InferType, array, object, string } from 'yup';
 
 export enum SubmitDataFormName {
   Hall = 'hall',

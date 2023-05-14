@@ -1,6 +1,6 @@
+import { SubmitDataForm } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { SubmitDataForm } from '.';
 
 const meta: Meta<typeof SubmitDataForm> = {
   title: 'Feature/Submit Data Form',
