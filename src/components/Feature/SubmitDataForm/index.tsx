@@ -9,6 +9,8 @@ import {
 import { Button } from '@/components/base/Button';
 import { FormikSelector } from '@/components/formControls/FormikSelector';
 import CHARACTERS from '@/constants/characters';
+import { FormikSelect } from '@/components/formControls/FormikSelect';
+import { HALLS } from '@/constants/Halls';
 
 export type SubmitDataFormProps = {
   onSubmit: (formData: SubmitDataFormType) => void;
@@ -38,12 +40,19 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({
         }));
 
         return (
-          <Form className="text-white border rounded border-secondary">
+          <Form className="text-white border rounded border-secondary bg-primary-1">
             <div className="p-4">
               <h2 className="text-2xl font-bold">Submit your run</h2>
             </div>
             <div className="w-full h-full">
-              <div className="p-4">HAKDOG</div>
+              <div className="p-4">
+                <div className="w-60">
+                  <FormikSelect
+                    name={SubmitDataFormName.Hall}
+                    options={HALLS}
+                  />
+                </div>
+              </div>
 
               <div className="p-4">
                 <div className="flex flex-col gap-2">

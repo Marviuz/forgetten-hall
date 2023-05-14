@@ -1,6 +1,8 @@
+import { HALLS } from '@/constants/Halls';
 import { InferType, array, object, string } from 'yup';
 
 export enum SubmitDataFormName {
+  Hall = 'hall',
   Team1 = 'team1',
   Team2 = 'team2',
 }
@@ -12,6 +14,7 @@ const initialValue = {
 };
 
 export const initialValues = {
+  [SubmitDataFormName.Hall]: HALLS[0],
   [SubmitDataFormName.Team1]: [
     initialValue,
     initialValue,
@@ -39,6 +42,11 @@ const valueSchema = array(
 );
 
 export const validationSchema = object({
+  [SubmitDataFormName.Hall]: object({
+    image: string(),
+    label: string(),
+    value: string(),
+  }),
   [SubmitDataFormName.Team1]: valueSchema,
   [SubmitDataFormName.Team2]: valueSchema,
 });
