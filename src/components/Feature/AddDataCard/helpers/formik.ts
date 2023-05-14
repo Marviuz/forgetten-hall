@@ -5,26 +5,42 @@ export enum AddDataFormNames {
   Team2 = 'team2',
 }
 
+const initialValue = {
+  src: '',
+  value: '',
+  label: '',
+};
+
 export const initialValues = {
-  [AddDataFormNames.Team1]: [],
-  [AddDataFormNames.Team2]: [],
+  [AddDataFormNames.Team1]: [
+    initialValue,
+    initialValue,
+    initialValue,
+    initialValue,
+  ],
+  [AddDataFormNames.Team2]: [
+    initialValue,
+    initialValue,
+    initialValue,
+    initialValue,
+  ],
 };
 
 export const validationSchema = object({
   [AddDataFormNames.Team1]: array(
     object({
-      image: string(),
-      label: string(),
+      src: string(),
       value: string(),
+      label: string(),
     })
   ).min(1),
   [AddDataFormNames.Team2]: array(
     object({
-      image: string(),
-      label: string(),
+      src: string(),
       value: string(),
+      label: string(),
     })
   ).min(1),
-});
+}).optional();
 
 export type AddDataFormType = InferType<typeof validationSchema>;

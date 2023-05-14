@@ -1,11 +1,14 @@
 import { FC } from 'react';
-import { Formik, Form } from 'formik';
+import { Formik, Form, FieldArray } from 'formik';
 import {
+  AddDataFormNames,
   AddDataFormType,
   initialValues,
   validationSchema,
 } from './helpers/formik';
 import { Button } from '@/components/base/Button';
+import { FormikSelector } from '@/components/formControls/FormikSelector';
+import CHARACTERS from '@/constants/characters';
 
 export type AddDataCardProps = {
   onSubmit: (formData: AddDataFormType) => void;
@@ -27,7 +30,24 @@ export const AddDataCard: FC<AddDataCardProps> = ({ onSubmit, ...props }) => {
             <div className="w-full h-full">
               <div className="p-4">
                 <div className="grid grid-cols-4 gap-2">
-                  {/* TODO character chooser */}
+                  <FieldArray
+                    name={AddDataFormNames.Team1}
+                    render={(arrayHelper) => (
+                      <>
+                        {values[AddDataFormNames.Team1].map((_, i) => (
+                          <FormikSelector
+                            key={i}
+                            name={`${AddDataFormNames.Team1}.${i}`}
+                            options={CHARACTERS.map((val) => ({
+                              src: val.img,
+                              value: val.name,
+                              label: val.name,
+                            }))}
+                          />
+                        ))}
+                      </>
+                    )}
+                  />
                 </div>
               </div>
             </div>
