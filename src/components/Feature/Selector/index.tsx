@@ -1,12 +1,11 @@
 import { Button } from '@/components/base/Button';
 import { Dialog, Transition } from '@headlessui/react';
-import Image, { ImageProps } from 'next/image';
 import { FC, useState, Fragment } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 export type ValueType = {
   id?: string;
-  src: ImageProps['src'];
+  src: string;
   value: string;
   label: string;
 };
@@ -31,7 +30,9 @@ export const Selector: FC<SelectorProps> = ({
     <>
       <Button
         className="relative items-end p-0 overflow-hidden bg-center bg-cover enabled:active:scale-100 enabled:hover:scale-105 w-36 h-52 disabled:bg-gray-500 disabled:bg-blend-multiply"
-        style={{ backgroundImage: value?.src && `url(${value.src})` }}
+        style={{
+          backgroundImage: value?.src && `url(${value.src})`,
+        }}
         onClick={() => setIsOpen(true)}
         disabled={disabled}
       >
@@ -71,30 +72,24 @@ export const Selector: FC<SelectorProps> = ({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Dialog.Panel className="absolute text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 w-full max-w-[888px] bg-primary-1 border border-secondary rounded">
+            <Dialog.Panel className="absolute text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 w-full max-w-[888px] bg-primary-1 border border-secondary rounded max-h-[768px] overflow-auto">
               <div className="p-8">
                 <div className="flex flex-wrap justify-center gap-2">
                   {options.map((val, i) => (
                     <Button
                       key={val.id || i}
-                      className="relative items-end p-0 overflow-hidden active:scale-100 hover:scale-105 w-36 h-52"
+                      className="items-end p-0 overflow-hidden bg-center bg-cover active:scale-100 hover:scale-105 w-36 h-52"
+                      style={{ backgroundImage: `url(${val.src})` }}
                       onClick={() => {
                         onChange(val);
                         setIsOpen(false);
                       }}
                     >
-                      <div className="z-10 w-full text-white bg-black/75">
+                      <div className="w-full text-white bg-black/75">
                         <div className="p-3 text-lg font-semibold text-center">
                           {val.label}
                         </div>
                       </div>
-
-                      <Image
-                        src={val.src}
-                        alt={val.label}
-                        fill
-                        className="absolute top-0 left-0 object-cover w-full h-full pointer-events-none"
-                      />
                     </Button>
                   ))}
                 </div>
