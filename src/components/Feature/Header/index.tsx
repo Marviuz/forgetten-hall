@@ -80,7 +80,12 @@ export const Header: FC<HeaderProps> = () => {
             leaveTo="opacity-0 scale-95"
           >
             <Dialog.Panel className="absolute -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
-              <SubmitDataForm onSubmit={console.log} />
+              <SubmitDataForm
+                onSubmit={(data) => {
+                  // TODO process data
+                  setIsOpen(false);
+                }}
+              />
             </Dialog.Panel>
           </Transition.Child>
         </Dialog>
