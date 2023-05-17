@@ -1,6 +1,14 @@
 import { ReactNode } from 'react';
 
-// TODO add dynamic meta data based on current hall#
+type HallPage = {
+  params: { hall: number };
+};
+
+export const generateMetadata = async ({ params }: HallPage) => {
+  return {
+    title: `HSR Hall #${params.hall}`,
+  };
+};
 
 export default function HallLayout({ children }: { children: ReactNode }) {
   return children;

@@ -1,9 +1,7 @@
-type HallPageProps = {
-  params: {
-    hall: string;
-  };
+type HallPage = {
+  params: { hall: number };
 };
 
-export default function HallPage({ params }: HallPageProps) {
+export default async function HallPage({ params }: HallPage) {
   return <div className="text-white">{params.hall}</div>;
 }
