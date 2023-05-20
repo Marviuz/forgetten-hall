@@ -19,3 +19,8 @@
     @apply bg-primary-1;
   }
 }
+
+/* react-select override their `!important`s */
+.react-select > .react-select__control {
+  @apply outline outline-secondary outline-1 focus-within:outline-2 focus-within:outline-accent !important;
+}

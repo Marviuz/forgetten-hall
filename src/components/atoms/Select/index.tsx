@@ -21,6 +21,8 @@ export const Select: FC<SelectProps> = (props) => {
   return (
     <ReactSelect
       unstyled
+      classNamePrefix="react-select"
+      className="react-select"
       classNames={{
         menuList: () => 'border border-secondary rounded bg-primary-1 mt-2',
         option: ({ isSelected }) =>
@@ -29,8 +31,6 @@ export const Select: FC<SelectProps> = (props) => {
             isSelected && 'bg-secondary'
           ),
         noOptionsMessage: () => 'text-white font-semibold italic py-2 px-4',
-        container: () =>
-          'outline outline-1 outline-secondary focus-within:outline-2 focus-within:outline-accent rounded',
         control: ({ menuIsOpen }) =>
           twMerge(textFieldStyles(), 'gap-2', menuIsOpen && 'bg-secondary'),
         input: () => 'cursor-text',
