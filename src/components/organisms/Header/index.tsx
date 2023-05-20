@@ -62,6 +62,7 @@ export const Header: FC<HeaderProps> = () => {
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <ModalContentContainer className="max-w-[636px] w-full">
           <SubmitDataForm
+            onClose={() => setIsOpen(false)}
             onSubmit={(data) => {
               // TODO process data
               setIsOpen(false);

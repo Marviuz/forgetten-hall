@@ -1,7 +1,9 @@
 import { Formik, Form, FieldArray } from 'formik';
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { Button } from '@/components/atoms/Button';
 import { Card } from '@/components/atoms/Card';
+import { IconButton } from '@/components/atoms/IconButton';
 import { FormikSelect } from '@/components/atoms/Select/FormikSelect';
 import { Text } from '@/components/atoms/Text';
 import { FormikSelector } from '@/components/molecules/Selector/FormikSelector';
@@ -16,9 +18,13 @@ import {
 
 export type SubmitDataFormProps = {
   onSubmit: (formData: SubmitDataFormType) => void;
+  onClose: (evt: SyntheticEvent) => void;
 };
 
-export const SubmitDataForm: FC<SubmitDataFormProps> = ({ onSubmit }) => {
+export const SubmitDataForm: FC<SubmitDataFormProps> = ({
+  onSubmit,
+  onClose,
+}) => {
   return (
     <Formik
       initialValues={initialValues}
@@ -41,10 +47,14 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({ onSubmit }) => {
         return (
           <Form>
             <Card className="w-full max-h-[calc(100vh-32px)] overflow-auto overflow-y-auto">
-              <div className="p-4">
+              <div className="flex items-center justify-between p-4 border-b border-secondary">
                 <Text as="h2" className="text-2xl font-bold">
                   Submit your run
                 </Text>
+
+                <IconButton onClick={onClose}>
+                  <AiOutlineClose />
+                </IconButton>
               </div>
               <div className="w-full">
                 <div className="p-4">
@@ -67,6 +77,7 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({ onSubmit }) => {
                         render={(arrayHelper) =>
                           values[SubmitDataFormName.Team1].map((_, i) => (
                             <FormikSelector
+                              label="Characters"
                               key={i}
                               name={`${SubmitDataFormName.Team1}.${i}`}
                               options={filteredOptions}
@@ -84,6 +95,7 @@ export const SubmitDataForm: FC<SubmitDataFormProps> = ({ onSubmit }) => {
                         render={(arrayHelper) =>
                           values[SubmitDataFormName.Team2].map((_, i) => (
                             <FormikSelector
+                              label="Characters"
                               key={i}
                               name={`${SubmitDataFormName.Team2}.${i}`}
                               options={filteredOptions}
