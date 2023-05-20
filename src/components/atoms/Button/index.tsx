@@ -1,11 +1,10 @@
+import { cva, VariantProps } from 'class-variance-authority';
 import { ComponentPropsWithRef, FC, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { type VariantProps, tv } from 'tailwind-variants';
-import { glass } from '@/components/common/glass';
+import { glassVariant, GlassVariantProps } from '@/components/common/glass';
 
-export const buttonClasses = tv({
-  extend: glass,
-  base: [
+export const buttonClasses = cva(
+  [
     'flex items-center justify-center',
     'px-4 py-2 h-11 rounded',
 
@@ -17,16 +16,20 @@ export const buttonClasses = tv({
     'enabled:active:outline-1 enabled:active:bg-primary-1',
     'hover:outline-accent hover:outline-2 enabled:hover:bg-secondary',
   ],
-  variants: {
-    disabled: {
-      true: 'disabled:bg-neutral-950 disabled:text-neutral-600 pointer-events-none',
+  {
+    variants: {
+      disabled: {
+        true: 'disabled:bg-neutral-950 disabled:text-neutral-600 pointer-events-none',
+      },
     },
-  },
-});
+  }
+);
 
 export type ButtonVariants = VariantProps<typeof buttonClasses>;
 
-export type ButtonProps = ComponentPropsWithRef<'button'> & ButtonVariants & {};
+export type ButtonProps = ComponentPropsWithRef<'button'> &
+  ButtonVariants &
+  GlassVariantProps & {};
 
 export const Button: FC<ButtonProps> = forwardRef(
   (
@@ -35,7 +38,11 @@ export const Button: FC<ButtonProps> = forwardRef(
   ) => {
     return (
       <button
-        className={twMerge(buttonClasses({ disabled, glass }), className)}
+        className={twMerge(
+          buttonClasses({ disabled }),
+          glassVariant({ glass }),
+          className
+        )}
         disabled={disabled}
         ref={ref}
         type={type}

@@ -6,7 +6,7 @@ import { Card } from '@/components/atoms/Card';
 import { IconButton } from '@/components/atoms/IconButton';
 import { Modal, ModalContentContainer } from '@/components/atoms/Modal';
 import { Text } from '@/components/atoms/Text';
-import { glass } from '@/components/common/glass';
+import { glassVariant } from '@/components/common/glass';
 
 export type ValueType = {
   id?: string;
@@ -65,7 +65,7 @@ export const Selector: FC<SelectorProps> = ({
               {label && (
                 <div
                   className={twMerge(
-                    glass(),
+                    glassVariant(),
                     'sticky top-0 z-10 bg-primary-1 border-b border-secondary'
                   )}
                 >

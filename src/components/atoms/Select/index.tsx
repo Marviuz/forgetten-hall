@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { FC } from 'react';
 import ReactSelect, { type Props, components } from 'react-select';
 import { twMerge } from 'tailwind-merge';
-import { textFieldStyles } from '../TextField';
+import { GlassVariantProps, glassVariant } from '@/components/common/glass';
+import { TextFieldVariants, textFieldClasses } from '../TextField';
 
 export type OptionType = {
   image: string;
@@ -13,11 +14,13 @@ export type OptionType = {
 export type SelectProps = Omit<
   Props<OptionType>,
   'unstyled' | 'components' | 'classNames'
-> & {
-  name: string;
-};
+> &
+  TextFieldVariants &
+  GlassVariantProps & {
+    name: string;
+  };
 
-export const Select: FC<SelectProps> = (props) => {
+export const Select: FC<SelectProps> = ({ disabled, glass, ...props }) => {
   return (
     <ReactSelect
       unstyled
@@ -32,7 +35,12 @@ export const Select: FC<SelectProps> = (props) => {
           ),
         noOptionsMessage: () => 'text-white font-semibold italic py-2 px-4',
         control: ({ menuIsOpen }) =>
-          twMerge(textFieldStyles(), 'gap-2', menuIsOpen && 'bg-secondary'),
+          twMerge(
+            textFieldClasses({ disabled }),
+            glassVariant({ glass }),
+            'gap-2',
+            menuIsOpen && 'bg-secondary'
+          ),
         input: () => 'cursor-text',
       }}
       components={{

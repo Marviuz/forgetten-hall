@@ -1,31 +1,35 @@
+import { VariantProps, cva } from 'class-variance-authority';
 import Link from 'next/link';
 import { ComponentPropsWithRef, FC, forwardRef } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { type VariantProps, tv } from 'tailwind-variants';
+import { GlassVariantProps, glassVariant } from '@/components/common/glass';
 import { buttonClasses } from '../Button';
 
-export const linkClasses = tv({
-  extend: buttonClasses,
-  base: 'hover:bg-secondary active:bg-primary-1 active:outline-1',
-  variants: {
-    disabled: {
-      true: 'bg-neutral-950 text-neutral-600 pointer-events-none',
+export const linkClasses = cva(
+  'hover:bg-secondary active:bg-primary-1 active:outline-1',
+  {
+    variants: {
+      disabled: {
+        true: 'bg-neutral-950 text-neutral-600 pointer-events-none',
+      },
     },
-    glass: {}, // TODO Probably has better implementation
-  },
-});
+  }
+);
 
 export type LinkVariants = VariantProps<typeof linkClasses>;
 
 export type ButtonLinkProps = ComponentPropsWithRef<typeof Link> &
-  LinkVariants & {};
+  LinkVariants &
+  GlassVariantProps & {};
 
 export const ButtonLink: FC<ButtonLinkProps> = forwardRef(
   ({ className, children, disabled, glass, ...props }, ref) => {
     return (
       <Link
         className={twMerge(
-          linkClasses({ disabled: Boolean(disabled), glass }),
+          buttonClasses({ disabled }),
+          linkClasses({ disabled }),
+          glassVariant({ glass }),
           className
         )}
         ref={ref}

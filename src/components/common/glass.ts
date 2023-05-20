@@ -1,6 +1,6 @@
-import { tv } from 'tailwind-variants';
+import { VariantProps, cva } from 'class-variance-authority';
 
-export const glass = tv({
+export const glassVariant = cva([], {
   variants: {
     glass: {
       true: 'bg-opacity-20 backdrop-blur-sm',
@@ -8,3 +8,5 @@ export const glass = tv({
   },
   defaultVariants: { glass: true },
 });
+
+export type GlassVariantProps = VariantProps<typeof glassVariant>;

@@ -1,4 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
+import { VariantProps, cva } from 'class-variance-authority';
 import {
   ComponentProps,
   FC,
@@ -7,15 +8,12 @@ import {
   forwardRef,
 } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { type VariantProps, tv } from 'tailwind-variants';
-import { glass } from '@/components/common/glass';
+import { GlassVariantProps, glassVariant } from '@/components/common/glass';
 
-export const modalClasses = tv({
-  extend: glass,
-  base: 'bg-black',
-});
+export const modalClasses = cva('bg-black');
 
 export type ModalProps = VariantProps<typeof modalClasses> &
+  GlassVariantProps &
   PropsWithChildren & {
     isOpen: boolean;
     onClose: (isOpen: boolean) => void;
@@ -36,7 +34,7 @@ export const Modal: FC<ModalProps> = ({ glass, isOpen, onClose, children }) => {
         >
           <div
             className={twMerge(
-              modalClasses({ glass: Boolean(glass) }),
+              glassVariant({ glass }),
               'fixed inset-0 bg-black/30'
             )}
             aria-hidden="true"

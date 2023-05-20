@@ -1,17 +1,10 @@
+import { VariantProps, cva } from 'class-variance-authority';
 import { FC } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { type VariantProps, tv } from 'tailwind-variants';
+import { glassVariant } from '@/components/common/glass';
 import { Button, ButtonProps, buttonClasses } from '../Button';
 
-const iconButtonClasses = tv({
-  extend: buttonClasses,
-  base: 'p-0 rounded-full h-11 w-11',
-  variants: {
-    glass: {
-      true: '', // TODO Probably has better implementation
-    },
-  },
-});
+const iconButtonClasses = cva('p-0 rounded-full h-11 w-11');
 
 export type IconButtonVariants = VariantProps<typeof iconButtonClasses>;
 
@@ -21,13 +14,16 @@ export const IconButton: FC<IconButtonProps> = ({
   children,
   className,
   glass,
+  disabled,
   ...props
 }) => {
   return (
     <Button
       {...props}
       className={twMerge(
-        iconButtonClasses({ glass: Boolean(glass) }),
+        buttonClasses({ disabled }),
+        iconButtonClasses(),
+        glassVariant({ glass }),
         className
       )}
     >

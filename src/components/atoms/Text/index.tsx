@@ -1,13 +1,12 @@
+import { VariantProps, cva } from 'class-variance-authority';
 import {
   ComponentPropsWithRef,
   ComponentPropsWithoutRef,
   ElementType,
 } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { type VariantProps, tv } from 'tailwind-variants';
 
-export const textClasses = tv({
-  base: 'text-sm text-white',
+export const textClasses = cva('text-sm text-white', {
   variants: {
     variant: {
       h1: 'text-8xl',
