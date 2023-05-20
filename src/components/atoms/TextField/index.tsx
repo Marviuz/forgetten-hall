@@ -18,10 +18,10 @@ export type TextFieldProps = PropsWithRef<
 >;
 
 export const TextField: FC<TextFieldProps> = forwardRef(
-  ({ className, disabled, ...props }, ref) => {
+  ({ className, disabled, glass, ...props }, ref) => {
     return (
       <input
-        className={twMerge(textFieldStyles({ disabled }), className)}
+        className={twMerge(textFieldStyles({ disabled, glass }), className)}
         ref={ref}
         disabled={disabled}
         {...props}

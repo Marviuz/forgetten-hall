@@ -12,9 +12,13 @@ export type CardProps = ComponentPropsWithRef<'div'> &
   VariantProps<typeof cardClasses> & {};
 
 export const Card: FC<CardProps> = forwardRef(
-  ({ children, className, ...props }, ref) => {
+  ({ children, className, glass, ...props }, ref) => {
     return (
-      <div ref={ref} {...props} className={twMerge(cardClasses(), className)}>
+      <div
+        ref={ref}
+        {...props}
+        className={twMerge(cardClasses({ glass: Boolean(glass) }), className)}
+      >
         {children}
       </div>
     );

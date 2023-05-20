@@ -11,6 +11,7 @@ export const linkClasses = tv({
     disabled: {
       true: 'bg-neutral-950 text-neutral-600 pointer-events-none',
     },
+    glass: {}, // TODO Probably has better implementation
   },
 });
 
@@ -20,11 +21,11 @@ export type ButtonLinkProps = ComponentPropsWithRef<typeof Link> &
   LinkVariants & {};
 
 export const ButtonLink: FC<ButtonLinkProps> = forwardRef(
-  ({ className, children, disabled, ...props }, ref) => {
+  ({ className, children, disabled, glass, ...props }, ref) => {
     return (
       <Link
         className={twMerge(
-          linkClasses({ disabled: Boolean(disabled) }),
+          linkClasses({ disabled: Boolean(disabled), glass }),
           className
         )}
         ref={ref}
