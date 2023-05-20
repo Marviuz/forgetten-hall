@@ -20,12 +20,12 @@ export type SelectProps = Omit<
     name: string;
   };
 
-export const Select: FC<SelectProps> = ({ disabled, glass, ...props }) => {
+export const Select: FC<SelectProps> = ({ className, ...props }) => {
   return (
     <ReactSelect
       unstyled
       classNamePrefix="react-select"
-      className="react-select"
+      className={twMerge('react-select', className)}
       classNames={{
         menuList: () => 'border border-secondary rounded bg-primary-1 mt-2',
         option: ({ isSelected }) =>
@@ -36,8 +36,8 @@ export const Select: FC<SelectProps> = ({ disabled, glass, ...props }) => {
         noOptionsMessage: () => 'text-white font-semibold italic py-2 px-4',
         control: ({ menuIsOpen }) =>
           twMerge(
-            textFieldClasses({ disabled }),
-            glassVariant({ glass }),
+            textFieldClasses({ ...props }),
+            glassVariant({ ...props }),
             'gap-2',
             menuIsOpen && 'bg-secondary'
           ),

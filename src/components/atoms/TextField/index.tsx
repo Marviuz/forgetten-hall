@@ -21,16 +21,15 @@ export type TextFieldProps = PropsWithRef<
 >;
 
 export const TextField: FC<TextFieldProps> = forwardRef(
-  ({ className, disabled, glass, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     return (
       <input
         className={twMerge(
-          textFieldClasses({ disabled }),
-          glassVariant({ glass }),
+          textFieldClasses(props),
+          glassVariant(props),
           className
         )}
         ref={ref}
-        disabled={disabled}
         {...props}
       />
     );

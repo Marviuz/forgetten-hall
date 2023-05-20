@@ -13,17 +13,15 @@ export type IconButtonProps = ButtonProps & IconButtonVariants & {};
 export const IconButton: FC<IconButtonProps> = ({
   children,
   className,
-  glass,
-  disabled,
   ...props
 }) => {
   return (
     <Button
       {...props}
       className={twMerge(
-        buttonClasses({ disabled }),
+        buttonClasses(props),
         iconButtonClasses(),
-        glassVariant({ glass }),
+        glassVariant(props),
         className
       )}
     >

@@ -19,7 +19,12 @@ export type ModalProps = VariantProps<typeof modalClasses> &
     onClose: (isOpen: boolean) => void;
   };
 
-export const Modal: FC<ModalProps> = ({ glass, isOpen, onClose, children }) => {
+export const Modal: FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  children,
+  ...props
+}) => {
   return (
     <Transition show={isOpen} as={Fragment}>
       <Dialog onClose={onClose}>
@@ -34,7 +39,7 @@ export const Modal: FC<ModalProps> = ({ glass, isOpen, onClose, children }) => {
         >
           <div
             className={twMerge(
-              glassVariant({ glass }),
+              glassVariant(props),
               'fixed inset-0 bg-black/30'
             )}
             aria-hidden="true"

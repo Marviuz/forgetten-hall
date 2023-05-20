@@ -23,13 +23,13 @@ export type ButtonLinkProps = ComponentPropsWithRef<typeof Link> &
   GlassVariantProps & {};
 
 export const ButtonLink: FC<ButtonLinkProps> = forwardRef(
-  ({ className, children, disabled, glass, ...props }, ref) => {
+  ({ className, children, disabled, ...props }, ref) => {
     return (
       <Link
         className={twMerge(
-          buttonClasses({ disabled }),
-          linkClasses({ disabled }),
-          glassVariant({ glass }),
+          buttonClasses({ disabled, ...props }),
+          linkClasses({ disabled, ...props }),
+          glassVariant(props),
           className
         )}
         ref={ref}
