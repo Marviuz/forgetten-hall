@@ -12,16 +12,18 @@ const HALL_ROUTES = Array.from(Array(7)).map((_, i) => ({
 
 export default function Home() {
   return (
-    <div className="flex justify-around">
-      {HALL_ROUTES.map(({ hallNumber, image, label }, i) => (
-        <Link
-          href={`${NavigationRoutes.Hall}/${hallNumber}`}
-          className="relative w-14 aspect-square"
-          key={i}
-        >
-          <Image src={image} alt={label} fill />
-        </Link>
-      ))}
-    </div>
+    <main className="text-white">
+      <div className="flex justify-around">
+        {HALL_ROUTES.map(({ hallNumber, image, label }, i) => (
+          <Link
+            href={`${NavigationRoutes.Hall}/${hallNumber}`}
+            className="relative w-14 aspect-square"
+            key={i}
+          >
+            <Image src={image} alt={label} fill />
+          </Link>
+        ))}
+      </div>
+    </main>
   );
 }

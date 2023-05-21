@@ -1,15 +1,24 @@
-import { ReactNode } from 'react';
+import { HallNavigation } from '@/components/organisms/HallNavigation';
+import { LayoutProps } from '@/utils/PageRoute';
+import { HallRoute } from './HallRoute';
 
-type HallPage = {
-  params: { hall: number };
+type HallLayoutProps = {
+  chart: '@chart';
 };
 
-export const generateMetadata = async ({ params }: HallPage) => {
-  return {
-    title: `HSR Hall #${params.hall}`,
-  };
-};
-
-export default function HallLayout({ children }: { children: ReactNode }) {
-  return children;
+export default function HallLayout({
+  children,
+  params,
+  ...props
+}: LayoutProps<HallRoute, HallLayoutProps>) {
+  return (
+    <div className="container flex gap-8 mx-auto my-12">
+      <main className="w-full">
+        <div className="text-white">
+          <div>{props.chart}</div>
+        </div>
+      </main>
+      <HallNavigation />
+    </div>
+  );
 }
