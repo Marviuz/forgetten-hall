@@ -4,6 +4,8 @@ import { HallRoute } from './HallRoute';
 
 type HallLayoutProps = {
   chart: '@chart';
+  mostUsedChars: '@mostUsedChars';
+  mostUsedTeams: '@mostUsedTeams';
 };
 
 export default function HallLayout({
@@ -16,6 +18,8 @@ export default function HallLayout({
       <main className="w-full">
         <div className="text-white">
           <div>{props.chart}</div>
+          <div>{props.mostUsedChars}</div>
+          <div>{props.mostUsedTeams}</div>
         </div>
       </main>
       <HallNavigation />
