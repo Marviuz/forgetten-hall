@@ -21,6 +21,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+// TODO data of character for team1 vs team2
 export type HallChartData = {
   label: string;
   data: number;
@@ -37,37 +39,35 @@ export const HallChart: FC<HallChartProps> = ({ data, chartTitle }) => {
 
   return (
     <div className="w-full mt-5 aspect-video" ref={ref}>
-      <div style={{ ...sizes }}>
-        <Bar
-          options={{
-            indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              title: {
-                display: Boolean(chartTitle),
-                text: chartTitle,
-              },
-              legend: {
-                display: false,
-              },
+      <Bar
+        height={sizes.height}
+        width={sizes.width}
+        options={{
+          indexAxis: 'y',
+          plugins: {
+            title: {
+              display: Boolean(chartTitle),
+              text: chartTitle,
             },
-          }}
-          data={{
-            // TODO include characters's profile image as labels
-            labels: data.map(({ label }) => label),
-            datasets: [
-              {
-                data: data.map(({ data }) => data),
-                label: 'hakdog',
-                backgroundColor: data.map(
-                  ({ color }) => color || getRandomColor()
-                ),
-              },
-            ],
-          }}
-        />
-      </div>
+            legend: {
+              display: false,
+            },
+          },
+        }}
+        data={{
+          // TODO include characters's profile image as labels
+          labels: data.map(({ label }) => label),
+          datasets: [
+            {
+              data: data.map(({ data }) => data),
+              label: 'hakdog',
+              backgroundColor: data.map(
+                ({ color }) => color || getRandomColor()
+              ),
+            },
+          ],
+        }}
+      />
     </div>
   );
 };
