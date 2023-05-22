@@ -1,5 +1,6 @@
 'use client';
 
+import { useWindowSize } from '@react-hookz/web';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,9 +10,8 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { useResizeDetector } from 'react-resize-detector';
 
 ChartJS.register(
   CategoryScale,
@@ -35,15 +35,19 @@ export type HallChartProps = {
 };
 
 export const HallChart: FC<HallChartProps> = ({ data, chartTitle }) => {
-  const { ref, ...sizes } = useResizeDetector();
+  const windowSize = useWindowSize();
+  const animate = useRef(true);
 
   return (
-    <div className="w-full mt-5 aspect-video" ref={ref}>
+    <div className="w-full mt-5">
       <Bar
-        height={sizes.height}
-        width={sizes.width}
+        key={JSON.stringify(windowSize)} // resize hack
         options={{
+          animation: animate.current && {
+            onComplete: () => (animate.current = false),
+          },
           indexAxis: 'y',
+          responsive: true,
           plugins: {
             title: {
               display: Boolean(chartTitle),
