@@ -14,7 +14,7 @@ export default function HallLayout({
   ...props
 }: LayoutProps<HallRoute, HallLayoutProps>) {
   return (
-    <div className="container flex gap-8 mx-auto my-12">
+    <div className="w-full max-w-[1920px] px-6 flex flex-col-reverse md:flex-row items-start gap-8 mx-auto my-12">
       <main className="w-full">
         <div className="text-white">
           <div>{props.chart}</div>

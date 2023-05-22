@@ -19,14 +19,15 @@ const HALL_ROUTES = Array.from(Array(7)).map((_, i) => ({
 
 export const HallNavigation: FC<HallNavigationProps> = () => {
   return (
-    <aside className={twMerge(cardClasses(), 'sticky top-0 p-4')}>
-      <div className="flex flex-col items-start gap-6 w-60">
+    <aside className={twMerge(cardClasses(), 'md:sticky md:top-0 p-4')}>
+      <div className="flex flex-col items-start gap-3 w-60">
         {HALL_ROUTES.map(({ hallNumber, image, label }, i) => (
           <ButtonLink
             href={`${NavigationRoutes.Hall}/${hallNumber}`}
             className="flex items-center w-full gap-2 justify-evenly"
             key={i}
           >
+            {/* TODO image size relative to button */}
             <Image
               src={image}
               alt={label}
