@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,7 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { FC } from 'react';
+import { FC, forwardRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 ChartJS.register(
@@ -29,35 +31,44 @@ export type HallChartProps = {
   chartTitle?: string;
 };
 
-export const HallChart: FC<HallChartProps> = ({ data, chartTitle }) => {
-  return (
-    <Bar
-      options={{
-        indexAxis: 'y',
-        responsive: true,
-        plugins: {
-          title: {
-            display: Boolean(chartTitle),
-            text: chartTitle,
+export const HallChart: FC<HallChartProps> = forwardRef<any, HallChartProps>( // ChartJSOrUndefined `Note: 'ChartJSOrUndefined' is declared but its value is never read.ts(6133)`
+  ({ data, chartTitle }, ref) => {
+    return (
+      <Bar
+        ref={ref}
+        options={{
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            title: {
+              display: Boolean(chartTitle),
+              text: chartTitle,
+            },
+            legend: {
+              display: false,
+            },
           },
-          legend: {
-            display: false,
-          },
-        },
-      }}
-      data={{
-        // TODO include characters's profile image as labels
-        labels: data.map(({ label }) => label),
-        datasets: [
-          {
-            data: data.map(({ data }) => data),
-            backgroundColor: data.map(({ color }) => color || getRandomColor()),
-          },
-        ],
-      }}
-    />
-  );
-};
+        }}
+        data={{
+          // TODO include characters's profile image as labels
+          labels: data.map(({ label }) => label),
+          datasets: [
+            {
+              data: data.map(({ data }) => data),
+              label: 'hakdog',
+              backgroundColor: data.map(
+                ({ color }) => color || getRandomColor()
+              ),
+            },
+          ],
+        }}
+      />
+    );
+  }
+);
+
+HallChart.displayName = HallChart.name;
 
 const getRandomColor = () => {
   const red = Math.floor(Math.random() * 255);
