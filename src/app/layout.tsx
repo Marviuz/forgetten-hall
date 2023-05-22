@@ -1,3 +1,4 @@
+import 'react-loading-skeleton/dist/skeleton.css';
 import './globals.css';
 import { Footer } from '@/components/organisms/Footer';
 import { Header } from '@/components/organisms/Header';
