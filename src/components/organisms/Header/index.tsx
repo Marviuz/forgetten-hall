@@ -34,8 +34,8 @@ export const Header: FC<HeaderProps> = () => {
     <>
       <header className="h-20 px-4 border-b bg-primary-1 border-secondary">
         <div className="w-full h-full">
-          <div className="flex h-full">
-            <div className="flex items-center w-full h-full">
+          <div className="flex justify-between h-full">
+            <div className="flex items-center h-full">
               <Link
                 href={`${NavigationRoutes.Home}`}
                 className="flex items-center italic"
