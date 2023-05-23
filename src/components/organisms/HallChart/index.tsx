@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { startCase } from 'lodash';
 import { FC, useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 
@@ -22,10 +23,10 @@ ChartJS.register(
   Legend
 );
 
-// TODO data of character for team1 vs team2
 export type HallChartData = {
   label: string;
-  data: number;
+  team1: number;
+  team2: number;
   color?: string;
 };
 
@@ -44,7 +45,7 @@ export const HallChart: FC<HallChartProps> = ({ data, chartTitle }) => {
         key={JSON.stringify(windowSize)} // resize hack
         options={{
           animation: animate.current && {
-            onComplete: () => (animate.current = false),
+            onComplete: () => (animate.current = false), // animate only on first mount
           },
           indexAxis: 'y',
           responsive: true,
@@ -61,22 +62,20 @@ export const HallChart: FC<HallChartProps> = ({ data, chartTitle }) => {
         data={{
           // TODO include characters's profile image as labels
           labels: data.map(({ label }) => label),
-          datasets: [
-            {
-              data: data.map(({ data }) => data),
-              label: 'hakdog',
+          datasets: (['team1', 'team2'] as (keyof HallChartData)[]).map(
+            (label) => ({
+              data: data.map((d) => d[label]),
+              label: startCase(label),
               backgroundColor: data.map(
                 ({ color }) => color || getRandomColor()
               ),
-            },
-          ],
+            })
+          ),
         }}
       />
     </div>
   );
 };
-
-HallChart.displayName = HallChart.name;
 
 const getRandomColor = () => {
   const red = Math.floor(Math.random() * 255);

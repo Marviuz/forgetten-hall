@@ -40,6 +40,9 @@ dependencies:
   formik:
     specifier: ^2.2.9
     version: 2.2.9(react@18.2.0)
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   next:
     specifier: 13.4.2
     version: 13.4.2(@babel/core@7.21.8)(react-dom@18.2.0)(react@18.2.0)
@@ -111,6 +114,9 @@ devDependencies:
   '@storybook/testing-library':
     specifier: 0.1.0
     version: 0.1.0
+  '@types/lodash':
+    specifier: ^4.14.194
+    version: 4.14.194
   eslint-plugin-storybook:
     specifier: ^0.6.12
     version: 0.6.12(eslint@8.40.0)(typescript@5.0.4)

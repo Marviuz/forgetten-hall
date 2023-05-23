@@ -10,9 +10,10 @@ export default function HallPageChartSection({ params }: PageProps<HallRoute>) {
     <HallChart
       chartTitle={`Hall #${params.hall}`}
       data={CHARACTERS.map((character) => ({
-        data: faker.number.int({ min: 1000, max: 10000000 }),
+        team1: faker.number.int({ min: 1000, max: 10000000 }),
+        team2: faker.number.int({ min: 1000, max: 10000000 }),
         label: character.name,
-      })).sort((a, b) => b.data - a.data)}
+      })).sort((a, b) => b.team1 - a.team1)}
     />
   );
 }
