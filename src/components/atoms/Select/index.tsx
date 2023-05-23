@@ -28,10 +28,11 @@ export const Select: FC<SelectProps> = ({ className, ...props }) => {
       className={twMerge('react-select', className)}
       classNames={{
         menuList: () => 'border border-secondary rounded bg-primary-1 mt-2',
-        option: ({ isSelected }) =>
+        option: ({ isSelected, isFocused }) =>
           twMerge(
-            'hover:bg-secondary transition-all border-t border-secondary first-of-type:border-t-0',
-            isSelected && 'bg-secondary'
+            'transition-all border-t border-secondary first-of-type:border-t-0',
+            (isSelected || isFocused) && 'bg-secondary',
+            isSelected && isFocused && 'outline outline-1 outline-accent'
           ),
         noOptionsMessage: () => 'text-white font-semibold italic py-2 px-4',
         control: ({ menuIsOpen }) =>
