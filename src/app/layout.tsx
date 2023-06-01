@@ -1,5 +1,6 @@
 import 'react-loading-skeleton/dist/skeleton.css';
 import './globals.css';
+import NextTopLoader from 'nextjs-toploader';
 import { Footer } from '@/components/organisms/Footer';
 import { Header } from '@/components/organisms/Header';
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-x-hidden">
+        <NextTopLoader />
         <Header />
         {children}
         <Footer />
